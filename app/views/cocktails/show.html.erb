@@ -1,0 +1,26 @@
+  <div id="banner">
+      <div id="wrapper">
+          <div id="container">
+              <div class="cocktail-bg">
+                <div class="cocktail-details">
+                  <h2><%= @cocktail.name %></h2>
+                  <div class="cocktail-details">
+                    <ul>
+                      <% @cocktail.ingredients.each do |ingredient| %>
+                      <i class="fas fa-glass-martini"></i><%= ingredient.name %>
+
+                      <% end %>
+                    </ul>
+                  </div>
+                  <div class="form">
+                    <%= simple_form_for [@cocktail, @dose] do |f| %>
+                      <%= f.input :ingredient, collection: @ingredients, input_html: { class: "form-input" }, label: "Ingredient", include_hidden: false %>
+                      <%= f.input :description, collection: @description, input_html: { class: "form-input" } %>
+                      <%= f.submit class: "btn btn-warning" %>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+          </div>
+      </div>
+  </div>
