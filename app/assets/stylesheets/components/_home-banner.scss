@@ -16,6 +16,8 @@
   padding-top: 40vh;
   background-position: center;
   position: relative;
+  display: flex;
+  justify-content: space-around;
 }
 
 .mini-banner {
@@ -35,15 +37,40 @@
   color: #eee;
   text-align: center;
   padding-top: 40vh;
+  padding: 150px;
   background-position: center;
   display: flex;
   justify-content: flex-end;
+  position: relative;
+}
+
+.edit-button {
+  position: absolute;
+  bottom: 40px;
+  right: 30px;
+  color: white;
+  &:hover {
+    color: #ce5f2b;
+    text-decoration: none;
+  }
 }
 
 .cocktail-details {
-  width: 600px;
-  text-align: center;
+  padding: 30px;
+  width: 400px;
+  text-align: left;
+  position: absolute;
+  top: 30px;
 }
+
+.cocktail-details h2 {
+  margin-bottom: 30px;
+}
+
+// .cocktail-lists {
+//   display: flex;
+//   justify-content: space-between;
+// }
 
 #cocktail-list {
   position: absolute;

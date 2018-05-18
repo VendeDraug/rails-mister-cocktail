@@ -2,24 +2,44 @@
       <div id="wrapper">
           <div id="container">
               <div class="cocktail-bg">
-                <div class="cocktail-details">
-                  <h2><%= @cocktail.name %></h2>
-                  <div class="cocktail-details">
-                    <ul>
-                      <% @cocktail.ingredients.each do |ingredient| %>
-                      <i class="fas fa-glass-martini"></i><%= ingredient.name %>
-
-                      <% end %>
-                    </ul>
+                <div class="grid-template">
+                  <div class="row">
+                    <div class="cocktail-details col-xs-12 col-sm-6 col-md-3">
+                      <h2><%= @cocktail.name %></h2>
+                      <hr>
+                    </div>
                   </div>
-                  <div class="form">
-                    <%= simple_form_for [@cocktail, @dose] do |f| %>
-                      <%= f.input :ingredient, collection: @ingredients, input_html: { class: "form-input" }, label: "Ingredient", include_hidden: false %>
-                      <%= f.input :description, collection: @description, input_html: { class: "form-input" } %>
-                      <%= f.submit class: "btn btn-warning" %>
-                    <% end %>
+
+                  <div class="row">
+                    <div class="cocktail-lists col-xs-6 col-sm-3">
+                      <div class="ingredients-list">
+                        <ul>
+                          <% @cocktail.ingredients.each do |ingredient| %>
+                          <p><i class="fas fa-glass-martini"></i><%= ingredient.name %></p>
+                          <% end %>
+                        </ul>
+                      </div>
+                    </div>
+                      <div class="description-list col-xs-6 col-sm-3">
+                        <p><% @cocktail.doses.each do |dose| %>
+                          <%= dose.description %></p>
+                        <% end %>
+                      </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-md-3">
+                      <%= simple_form_for [@cocktail, @dose] do |f| %>
+                        <%= f.input :ingredient, collection: @ingredients, input_html: { class: "form-input" }, label: "Ingredient", include_hidden: false %>
+                        <%= f.input :description, collection: @description, input_html: { class: "form-input" } %>
+                        <%= f.submit class: "btn btn-warning" %>
+                      <% end %>
+                    </div>
                   </div>
                 </div>
+
+
+                <%= link_to "Back to list", root_path, class: "edit-button" %>
               </div>
           </div>
       </div>

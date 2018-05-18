@@ -3,7 +3,7 @@
         <div id="container">
             <div class="banner-image">
               <div id="cocktail-list">
-                <h1>Cocktail List</h1>
+                <h1 class="cocktail-name"><%= link_to "Cocktail List", "#{root_path}#cocktail-list" %></h1>
               </div>
             </div>
         </div>
@@ -17,7 +17,25 @@
               <div class="cocktail-image">
                 <div class="cocktail-details">
                   <h2 class="cocktail-name"><%= link_to cocktail.name, cocktail_path(cocktail) %></h2>
+                  <hr>
+                  <div class="cocktail-lists">
+                    <div class="ingredients-list">
+                      <ul>
+                        <% cocktail.ingredients.each do |ingredient| %>
+                          <p><%= ingredient.name %></p>
+                        <% end %>
+                      </ul>
+                    </div>
+                    <div class="description-list">
+                      <ul>
+                        <% cocktail.doses.each do |dose| %>
+                          <p> <%= dose.description %></p>
+                        <% end %>
+                      </ul>
+                    </div>
+                  </div>
                 </div>
+                <%= link_to "Re-invent", cocktail_path(cocktail), class: "edit-button" %>
               </div>
           </div>
       </div>
@@ -26,83 +44,83 @@
 
 
 
-<div>a</div>
-<div>a</div>
-<div>a</div>
-<div>a</div>
-<div>a</div>
-<div>a</div>
-<div>a</div>
-<div>a</div>
-<div>a</div>
-<div>a</div>
-<div>a</div>
-<div>a</div>
-<div>a</div>
-<div>a</div>
-<div>a</div>
-<div>a</div>
-<div>a</div>
-<div>a</div>
-<div>a</div>
-<div>a</div>
-<div>a</div>
-<div>a</div>
-<div>a</div>
-<div>a</div>
-<div>a</div>
-<div>a</div>
-<div>a</div>
-<div>a</div>
-<div>a</div>
-<div>a</div>
-<div>a</div>
-<div>a</div>
-<div>a</div>
-<div>a</div>
-<div>a</div>
-<div>a</div>
-<div>a</div>
-<div>a</div>
-<div>a</div>
-<div>a</div>
-<div>a</div>
-<div>a</div>
-<div>a</div>
-<div>a</div>
-<div>a</div>
-<div>a</div>
-<div>a</div>
-<div>a</div>
-<div>a</div>
-<div>a</div>
-<div>a</div>
-<div>a</div>
-<div>a</div>
-<div>a</div><div>a</div>
-<div>a</div>
-<div>a</div>
-<div>a</div>
-<div>a</div>
-<div>a</div>
-<div>a</div>
-<div>a</div>
-<div>a</div>
-<div>a</div>
-<div>a</div>
-<div>a</div>
-<div>a</div>
-<div>a</div>
-<div>a</div>
-<div>a</div>
-<div>a</div>
-<div>a</div>
-<div>a</div>
-<div>a</div>
-<div>a</div>
-<div>a</div>
-<div>a</div>
-<div>a</div>
-<div>a</div>
-<div>a</div>
-<div>a</div>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>

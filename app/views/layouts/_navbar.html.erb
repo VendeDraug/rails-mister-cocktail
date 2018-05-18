@@ -4,9 +4,13 @@
   <div class="navbar-wagon-right hidden-xs hidden-sm">
 
     <!-- Links -->
-    <%= link_to "Home", cocktails_path, class: "navbar-wagon-item navbar-wagon-link" %>
+    <%= link_to "Home", root_path, class: "navbar-wagon-item navbar-wagon-link" %>
     <%= link_to "Invent cocktail", new_cocktail_path, class: "navbar-wagon-item navbar-wagon-link" %>
-    <%= link_to "Cocktail list", "#cocktail-list", class: "navbar-wagon-item navbar-wagon-link" %>
+    <% if params[:controller] == 'cocktails' && params[:action] == 'index' %>
+      <%= link_to "Cocktail list", "#cocktail-list", class: "navbar-wagon-item navbar-wagon-link" %>
+    <% else %>
+      <%= link_to "Cocktail list", "#{root_path}#cocktail-list", class: "navbar-wagon-item navbar-wagon-link" %>
+    <% end %>
 
     <!-- Search menu -->
   </div>
