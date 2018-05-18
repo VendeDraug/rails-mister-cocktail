@@ -11,18 +11,29 @@
     <% else %>
       <%= link_to "Cocktail list", "#{root_path}#cocktail-list", class: "navbar-wagon-item navbar-wagon-link" %>
     <% end %>
-
-    <!-- Search menu -->
   </div>
+
+  <!-- Search menu -->
+  <form class="navbar-form navbar-left">
+    <div class="form-group">
+      <input id="search" type="text" class="form-control" placeholder="Find the perfect tipple">
+    </div>
+    <button id="find" type="submit" class="btn btn-warning">Find</button>
+    <ul id="results"></ul>
+  </form>
 
   <!-- Dropdown list appearing on mobile only -->
   <div class="navbar-wagon-item hidden-md hidden-lg">
     <div class="dropdown">
       <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-        <li><a href="#">Some mobile link</a></li>
-        <li><a href="#">Other one</a></li>
-        <li><a href="#">Other one</a></li>
+        <li><%= link_to "Home", root_path, class: "navbar-wagon-item navbar-wagon-link" %></li>
+        <li><%= link_to "Invent cocktail", new_cocktail_path, class: "navbar-wagon-item navbar-wagon-link" %></li>
+        <li><% if params[:controller] == 'cocktails' && params[:action] == 'index' %>
+          <%= link_to "Cocktail list", "#cocktail-list", class: "navbar-wagon-item navbar-wagon-link" %>
+        <% else %>
+          <%= link_to "Cocktail list", "#{root_path}#cocktail-list", class: "navbar-wagon-item navbar-wagon-link" %>
+        <% end %></li>
       </ul>
     </div>
   </div>

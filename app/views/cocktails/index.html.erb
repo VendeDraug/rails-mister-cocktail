@@ -1,7 +1,7 @@
-<div id="b<div>a</div> nner">
-    <div id="wrd<iv >a</div> pper">
+<div id="banner">
+    <div id="wrapper">
         <div id="container">
-            <div class="banner-image">
+            <div class="home-banner-image">
               <div id="cocktail-list">
                 <h1 class="cocktail-name"><%= link_to "Cocktail List", "#{root_path}#cocktail-list" %></h1>
               </div>
@@ -10,35 +10,41 @@
     </div>
 </div>
 
+
+
 <% @cocktails.each do |cocktail| %>
-  <div id="banner">
+  <div class="row">
+    <div id="banner">
       <div id="wrapper">
-          <div id="container">
-              <div class="cocktail-image">
-                <div class="cocktail-details">
-                  <h2 class="cocktail-name"><%= link_to cocktail.name, cocktail_path(cocktail) %></h2>
-                  <hr>
-                  <div class="cocktail-lists">
+        <div id="container">
+          <div class="home-cocktail-image">
+            <div class="home-cocktail-details">
+              <h2 class="cocktail-name"><%= link_to cocktail.name, cocktail_path(cocktail) %></h2>
+              <hr>
+              <% cocktail.doses.each do |dose| %>
+                <div class="cocktail-dose">
+                  <div class="col-xs-6">
                     <div class="ingredients-list">
                       <ul>
-                        <% cocktail.ingredients.each do |ingredient| %>
-                          <p><%= ingredient.name %></p>
-                        <% end %>
+                        <p> <%= Ingredient.find(dose.ingredient_id).name %></p>
                       </ul>
                     </div>
+                  </div>
+                  <div class="col-xs-6">
                     <div class="description-list">
                       <ul>
-                        <% cocktail.doses.each do |dose| %>
-                          <p> <%= dose.description %></p>
-                        <% end %>
+                        <p style="text-align: right;"> <%= dose.description %></p>
                       </ul>
                     </div>
                   </div>
                 </div>
-                <%= link_to "Re-invent", cocktail_path(cocktail), class: "edit-button" %>
-              </div>
+              <% end %>
+            </div>
+            <%= link_to "Re-invent", cocktail_path(cocktail), class: "edit-button" %>
           </div>
+        </div>
       </div>
+    </div>
   </div>
 <% end %>
 

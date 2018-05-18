@@ -1,46 +1,70 @@
-  <div id="banner">
-      <div id="wrapper">
-          <div id="container">
-              <div class="cocktail-bg">
-                <div class="grid-template">
-                  <div class="row">
-                    <div class="cocktail-details col-xs-12 col-sm-6 col-md-3">
-                      <h2><%= @cocktail.name %></h2>
-                      <hr>
-                    </div>
-                  </div>
+<div id="banner">
+  <div id="wrapper">
+    <div id="container">
+      <div class="cocktail-image">
+        <div class="cocktail-details">
+          <h2 class="cocktail-name"><%= link_to @cocktail.name, cocktail_path(@cocktail) %></h2>
+          <hr>
 
-                  <div class="row">
-                    <div class="cocktail-lists col-xs-6 col-sm-3">
-                      <div class="ingredients-list">
-                        <ul>
-                          <% @cocktail.ingredients.each do |ingredient| %>
-                          <p><i class="fas fa-glass-martini"></i><%= ingredient.name %></p>
-                          <% end %>
-                        </ul>
-                      </div>
-                    </div>
-                      <div class="description-list col-xs-6 col-sm-3">
-                        <p><% @cocktail.doses.each do |dose| %>
-                          <%= dose.description %></p>
-                        <% end %>
-                      </div>
-                  </div>
 
-                  <div class="row">
-                    <div class="col-xs-12 col-sm-6 col-md-3">
-                      <%= simple_form_for [@cocktail, @dose] do |f| %>
-                        <%= f.input :ingredient, collection: @ingredients, input_html: { class: "form-input" }, label: "Ingredient", include_hidden: false %>
-                        <%= f.input :description, collection: @description, input_html: { class: "form-input" } %>
-                        <%= f.submit class: "btn btn-warning" %>
-                      <% end %>
-                    </div>
-                  </div>
+          <!-- Button trigger modal -->
+          <p data-toggle="modal" data-target="#myModal" class="edit-button">Edit doses</p>
+
+          <!-- Modal -->
+          <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title" id="myModalLabel">Edit doses</h4>
                 </div>
-
-
-                <%= link_to "Back to list", root_path, class: "edit-button" %>
+                <div class="modal-body">
+                  <%= simple_form_for [@cocktail, @dose] do |f| %>
+                    <%= f.input :ingredient, collection: @ingredients, input_html: { class: "form-input" }, label: "Ingredient", include_hidden: false %>
+                    <%= f.input :description, collection: @description, input_html: { class: "form-input" } %>
+                    <%= f.submit class: "btn btn-warning" %>
+                  <% end %>
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+                <div class="modal-footer">
+                </div>
               </div>
+            </div>
           </div>
+
+
+          <% @cocktail.doses.each do |dose| %>
+            <div class="cocktail-dose">
+              <div class="col-xs-6">
+                <div class="ingredients-list">
+                  <ul>
+                    <p>
+                    <%= Ingredient.find(dose.ingredient_id).name %></p>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-xs-6">
+                <div class="description-list">
+                  <ul>
+                    <p style="text-align: right;"> <%= dose.description %></p>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          <% end %>
+          <div class="col-xs-12">
+            <br>
+            <h3>Add a flavour</h3>
+            <br>
+            <%= simple_form_for [@cocktail, @dose] do |f| %>
+              <%= f.input :ingredient, collection: @ingredients, input_html: { class: "form-input" }, label: "Ingredient", include_hidden: false %>
+              <%= f.input :description, collection: @description, input_html: { class: "form-input" } %>
+              <%= f.submit class: "btn btn-warning" %>
+            <% end %>
+          </div>
+        </div>
       </div>
+    </div>
   </div>
+</div>
+

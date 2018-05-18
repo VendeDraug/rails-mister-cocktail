@@ -80,3 +80,18 @@
   border-left: 1px solid #E6E6E6;
   border-top: 1px solid #E6E6E6;
 }
+
+#search {
+  position: relative;
+}
+
+#results {
+  background-color: rgba(0,0,0,0.8);
+  color: white;
+  position: absolute;
+  top: 0px;
+  li {
+    list-style-type: none;
+  }
+}
+
