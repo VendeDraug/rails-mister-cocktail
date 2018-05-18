@@ -1,37 +1,10 @@
 <div id="banner">
   <div id="wrapper">
     <div id="container">
-      <div class="cocktail-image">
+      <div class="cocktail-image" style="background-image: linear-gradient(to right, rgba(255,255,255,0.0), rgba(0,0,0,0.6)), url('<%= cl_image_path @cocktail.photo %>')";>
         <div class="cocktail-details">
           <h2 class="cocktail-name"><%= link_to @cocktail.name, cocktail_path(@cocktail) %></h2>
           <hr>
-
-
-          <!-- Button trigger modal -->
-          <p data-toggle="modal" data-target="#myModal" class="edit-button">Edit doses</p>
-
-          <!-- Modal -->
-          <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  <h4 class="modal-title" id="myModalLabel">Edit doses</h4>
-                </div>
-                <div class="modal-body">
-                  <%= simple_form_for [@cocktail, @dose] do |f| %>
-                    <%= f.input :ingredient, collection: @ingredients, input_html: { class: "form-input" }, label: "Ingredient", include_hidden: false %>
-                    <%= f.input :description, collection: @description, input_html: { class: "form-input" } %>
-                    <%= f.submit class: "btn btn-warning" %>
-                  <% end %>
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
-                <div class="modal-footer">
-                </div>
-              </div>
-            </div>
-          </div>
-
 
           <% @cocktail.doses.each do |dose| %>
             <div class="cocktail-dose">
@@ -39,6 +12,9 @@
                 <div class="ingredients-list">
                   <ul>
                     <p>
+                    <%= link_to dose_path(dose), method: :delete do %>
+                    <i class="far fa-minus-square icon-link"></i>
+                    <% end %>
                     <%= Ingredient.find(dose.ingredient_id).name %></p>
                   </ul>
                 </div>

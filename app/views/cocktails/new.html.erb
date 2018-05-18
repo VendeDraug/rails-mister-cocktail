@@ -10,9 +10,13 @@
 <div class="wrapper">
   <div class="container">
     <div class="new-form">
-      <h1>What is in your cocktail?</h1>
+      <br>
+      <h1>Baptise your cocktail</h1>
+      <br>
       <%= simple_form_for @cocktail do |f| %>
         <%= f.input :name %>
+        <%= f.input :photo %>
+        <%= f.input :photo_cache, as: :hidden %>
         <%= f.submit %>
       <% end %>
     </div>
